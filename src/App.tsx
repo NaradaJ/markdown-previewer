@@ -3,11 +3,17 @@ import "./App.css";
 import ReactMarkdown from "react-markdown";
 
 function App()  {
-  const[markdownText,setMarkdownText] = useState(0);
+  const[markdownText,setMarkdownText] = useState<string>("");
 
   return<>
   <div>
-    <h1>Markdown Previewer</h1>
+    <h1 className="header">Markdown Previewer</h1>
+    <div className="boxes-container">
+      <textarea name="editor" id="editor" value={markdownText} onChange={(e)=>setMarkdownText(e.target.value)}></textarea>
+      <div id="preview">
+        <ReactMarkdown>{markdownText}</ReactMarkdown>
+      </div>
+    </div>
   </div>
   </>
 }
